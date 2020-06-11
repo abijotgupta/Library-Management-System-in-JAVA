@@ -66,7 +66,7 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 	public AdminUpdate() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 806, 625);
+		setBounds(100, 100, 610, 575);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setToolTipText("");
@@ -76,11 +76,11 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnAdminRegistrationForm = new JButton("ADMIN UPDATED DETAILS");
-		btnAdminRegistrationForm.setBounds(10, 31, 782, 79);
+		JButton btnAdminRegistrationForm = new JButton("UPDATE ADMIN  DETAILS");
+		btnAdminRegistrationForm.setBounds(10, 31, 573, 66);
 		btnAdminRegistrationForm.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnAdminRegistrationForm.setForeground(new Color(255, 255, 255));
-		btnAdminRegistrationForm.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 48));
+		btnAdminRegistrationForm.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 32));
 		btnAdminRegistrationForm.setFocusable(false);
 		btnAdminRegistrationForm.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnAdminRegistrationForm.setBackground(new Color(30, 144, 255));
@@ -88,47 +88,47 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		
 		JLabel lblFirstName = new JLabel("FIRST NAME");
 		lblFirstName.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblFirstName.setBounds(61, 184, 133, 29);
+		lblFirstName.setBounds(25, 177, 133, 29);
 		contentPane.add(lblFirstName);
 		
 		JLabel lblLastName = new JLabel("LAST NAME");
 		lblLastName.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblLastName.setBounds(61, 223, 133, 29);
+		lblLastName.setBounds(25, 216, 133, 29);
 		contentPane.add(lblLastName);
 		
 		JLabel lblDateOfBirth = new JLabel("DATE OF BIRTH");
 		lblDateOfBirth.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblDateOfBirth.setBounds(61, 301, 159, 29);
+		lblDateOfBirth.setBounds(25, 294, 159, 29);
 		contentPane.add(lblDateOfBirth);
 		
 		JLabel lblEmailId = new JLabel("EMAIL ID");
 		lblEmailId.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblEmailId.setBounds(61, 340, 118, 29);
+		lblEmailId.setBounds(25, 333, 118, 29);
 		contentPane.add(lblEmailId);
 		
 		JLabel lblGender = new JLabel("GENDER");
 		lblGender.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblGender.setBounds(61, 262, 118, 29);
+		lblGender.setBounds(25, 255, 118, 29);
 		contentPane.add(lblGender);
 		
 		JLabel lblUserName = new JLabel("USER NAME");
 		lblUserName.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblUserName.setBounds(61, 379, 133, 29);
+		lblUserName.setBounds(25, 372, 133, 29);
 		contentPane.add(lblUserName);
 		
 		JLabel lblPassword = new JLabel("PASSWORD");
 		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblPassword.setBounds(61, 418, 133, 29);
+		lblPassword.setBounds(25, 418, 133, 29);
 		contentPane.add(lblPassword);
 		
 		JLabel lblReenterPassword = new JLabel("RE-TYPE PASSWORD");
 		lblReenterPassword.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblReenterPassword.setBounds(61, 457, 238, 29);
+		lblReenterPassword.setBounds(25, 457, 192, 29);
 		contentPane.add(lblReenterPassword);
 		
 		
 		choice = new Choice();
-		choice.setBounds(340, 152, 121, 22);
+		choice.setBounds(227, 138, 121, 22);
 		choice.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		choice.setFocusable(false);
 		choice.setForeground(Color.BLACK);
@@ -154,13 +154,13 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		txtfirstName = new JTextField();
 		txtfirstName.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
 		txtfirstName.setColumns(10);
-		txtfirstName.setBounds(340, 185, 204, 29);
+		txtfirstName.setBounds(227, 178, 204, 29);
 		contentPane.add(txtfirstName);
 		
 		txtlastName = new JTextField();
 		txtlastName.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
 		txtlastName.setColumns(10);
-		txtlastName.setBounds(340, 224, 204, 29);
+		txtlastName.setBounds(227, 217, 204, 29);
 		contentPane.add(txtlastName);
 		
 		
@@ -168,7 +168,7 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		txtemailId = new JTextField();
 		txtemailId.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
 		txtemailId.setColumns(10);
-		txtemailId.setBounds(340, 341, 398, 29);
+		txtemailId.setBounds(227, 334, 344, 29);
 		contentPane.add(txtemailId);
 		
 		
@@ -176,14 +176,14 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		txtuserName = new JTextField();
 		txtuserName.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
 		txtuserName.setColumns(10);
-		txtuserName.setBounds(340, 380, 204, 29);
+		txtuserName.setBounds(227, 373, 204, 29);
 		contentPane.add(txtuserName);
 		
 		
 		
 		txtre_Pwd = new JTextField();
 		txtre_Pwd.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
-		txtre_Pwd.setBounds(340, 458, 204, 29);
+		txtre_Pwd.setBounds(227, 458, 204, 29);
 		contentPane.add(txtre_Pwd);
 		txtre_Pwd.setColumns(10);
 		
@@ -197,7 +197,7 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		btnUpdate.setFocusable(false);
 		btnUpdate.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnUpdate.setBackground(Color.WHITE);
-		btnUpdate.setBounds(61, 555, 133, 43);
+		btnUpdate.setBounds(51, 509, 133, 43);
 		contentPane.add(btnUpdate);
 		
 		
@@ -211,7 +211,7 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		lblX.setForeground(new Color(30, 144, 255));
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblX.setBounds(761, 0, 45, 35);
+		lblX.setBounds(565, 0, 45, 35);
 		contentPane.add(lblX);
 		
 		
@@ -224,29 +224,29 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 		btnBack.setFocusable(false);
 		btnBack.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnBack.setBackground(Color.WHITE);
-		btnBack.setBounds(411, 555, 133, 43);
+		btnBack.setBounds(341, 509, 133, 43);
 		contentPane.add(btnBack);
 		
 		comboGender = new JComboBox();
 		comboGender.setModel(new DefaultComboBoxModel(new String[] {"", "MALE", "FEMALE", "OTHERS"}));
 		comboGender.setName("DAY");
 		comboGender.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
-		comboGender.setBounds(340, 264, 141, 27);
+		comboGender.setBounds(227, 257, 141, 27);
 		contentPane.add(comboGender);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 14));
 		passwordField.setEchoChar('*');
-		passwordField.setBounds(340, 419, 204, 29);
+		passwordField.setBounds(227, 419, 204, 29);
 		contentPane.add(passwordField);
 		
 		dateChooser = new JDateChooser();
-		dateChooser.setBounds(340, 301, 141, 29);
+		dateChooser.setBounds(227, 294, 141, 29);
 		contentPane.add(dateChooser);
 		
 		lblID = new JLabel("ADMIN ID");
 		lblID.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblID.setBounds(61, 145, 133, 29);
+		lblID.setBounds(25, 138, 133, 29);
 		contentPane.add(lblID);
 		
 	}
@@ -300,7 +300,7 @@ public class AdminUpdate extends JFrame implements ActionListener, ItemListener
 			if(ae.getSource() == btnBack)        
 			{
 				this.setVisible(false);
-				new AdminLogI().setVisible(true);		
+				new AdminLogIn().setVisible(true);		
 			}
 			
 		}

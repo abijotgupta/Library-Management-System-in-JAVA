@@ -27,11 +27,13 @@ import java.util.Date;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class ReturnBook extends JFrame implements ActionListener {
 
-	private JPanel contentPane,panel,panel_1,panel_2;
+	private JPanel contentPane,panel_1,panel_2;
 	private JTextField txtID,txtName,txtBranch,txtSem,txtFine;
 	private JButton btnReturn, btnSearch;
 	private JTable table;
@@ -55,44 +57,37 @@ public class ReturnBook extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public ReturnBook() {
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1159, 566);
+		setBounds(100, 100, 1058, 489);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 10, 1125, 55);
-		contentPane.add(panel);
-		
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setBorder(new LineBorder(new Color(30, 144, 255)));
-		panel_1.setBounds(10, 84, 495, 393);
+		panel_1.setBounds(10, 84, 426, 393);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(532, 84, 603, 393);
+		panel_2.setBounds(446, 84, 603, 393);
 		contentPane.add(panel_2);
 		
-		JLabel lblNewLabel = new JLabel("RETURN BOOK");
-		lblNewLabel.setForeground(new Color(30, 144, 255));
-		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 45));
-		panel.add(lblNewLabel);
-		
 		JLabel lblNewLabel_1 = new JLabel("ENTER STUDENT DETAILS");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setOpaque(true);
-		lblNewLabel_1.setBackground(Color.PINK);
+		lblNewLabel_1.setBackground(new Color(30, 144, 255));
 		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 18));
 		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblNewLabel_1.setBounds(10, 10, 477, 44);
+		lblNewLabel_1.setBounds(10, 10, 406, 44);
 		panel_1.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Student ID");
@@ -158,7 +153,7 @@ public class ReturnBook extends JFrame implements ActionListener {
 		btnReturn.setFocusable(false);
 		btnReturn.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnReturn.setBackground(Color.WHITE);
-		btnReturn.setBounds(332, 331, 126, 38);
+		btnReturn.setBounds(263, 331, 126, 38);
 		panel_1.add(btnReturn);
 		
 		btnSearch = new JButton("Search");
@@ -170,7 +165,7 @@ public class ReturnBook extends JFrame implements ActionListener {
 		btnSearch.setFocusable(false);
 		btnSearch.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnSearch.setBackground(Color.WHITE);
-		btnSearch.setBounds(35, 331, 126, 38);
+		btnSearch.setBounds(33, 331, 126, 38);
 		panel_1.add(btnSearch);
 		panel_2.setLayout(null);
 		
@@ -211,6 +206,27 @@ public class ReturnBook extends JFrame implements ActionListener {
 	
 		table.setBounds(10, 6, 583, 377);
 		panel_2.add(table);
+		
+		JButton btnReturnBook = new JButton("RETURN BOOK\r\n");
+		btnReturnBook.setForeground(Color.WHITE);
+		btnReturnBook.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 34));
+		btnReturnBook.setFocusable(false);
+		btnReturnBook.setBackground(new Color(30, 144, 255));
+		btnReturnBook.setBounds(17, 27, 1032, 47);
+		contentPane.add(btnReturnBook);
+		
+		JLabel lblX = new JLabel("X");
+		lblX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		lblX.setHorizontalAlignment(SwingConstants.CENTER);
+		lblX.setForeground(new Color(30, 144, 255));
+		lblX.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblX.setBounds(1013, 0, 45, 35);
+		contentPane.add(lblX);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -220,6 +236,7 @@ public class ReturnBook extends JFrame implements ActionListener {
 	
 		if(ae.getSource() == btnSearch)        
 		{
+			
 			String sql = "select studentName, branch,sem, dateOfIssue from issuebooks where studentID = '"+txtID.getText() + "' ";
 			try {
 				PreparedStatement st = con.c.prepareStatement(sql);
@@ -229,7 +246,7 @@ public class ReturnBook extends JFrame implements ActionListener {
 			    Date date = new Date();  
 			    String today = formatter.format(date);  
 			   
-				if(txtID.getText() == null || rs == null)
+				if(txtID.getText() == "" || rs == null)
 				{
 					JOptionPane.showMessageDialog(null, "Please Enter Valid ID");
 				}
@@ -258,7 +275,7 @@ public class ReturnBook extends JFrame implements ActionListener {
 							txtFine.setText("0.0");
 						}
 						
-						double fine = (daysBetween - 30) * 5;    //5 rupees per day
+						double fine = (daysBetween - 30) * 2;    //2 rupees per day
 						txtFine.setText(""+fine);
 					     
 					}
@@ -340,7 +357,7 @@ public class ReturnBook extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Fine Has been Paid"); 
 			try {
 				
-				String sql = "delete from issuebooks where bookName = '"+txtID.getText() + "' ";
+				String sql = "delete from issuebooks where studentID ='"+txtID.getText()+"' ";
 				PreparedStatement st = con.c.prepareStatement(sql);
 				
 				JDialog.setDefaultLookAndFeelDecorated(true);
@@ -378,6 +395,5 @@ public class ReturnBook extends JFrame implements ActionListener {
 		}
 		*/
 	}
-
 }
 	

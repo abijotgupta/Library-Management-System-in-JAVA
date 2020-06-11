@@ -24,7 +24,7 @@ import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class StudentLogI extends JFrame implements ActionListener
+public class AdminLogIn extends JFrame implements ActionListener
 {
 
 	private JPanel contentPane;
@@ -41,7 +41,7 @@ public class StudentLogI extends JFrame implements ActionListener
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StudentLogI frame = new StudentLogI();
+					AdminLogIn frame = new AdminLogIn();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,37 +53,37 @@ public class StudentLogI extends JFrame implements ActionListener
 	/**
 	 * Create the frame.
 	 */
-	public StudentLogI() {
+	public AdminLogIn() {
 		setUndecorated(true);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 950, 550);
+		setBounds(100, 100, 942, 508);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 405, 507);
 		panel.setLayout(null);
 		panel.setBackground(new Color(30, 144, 255));
-		panel.setBounds(0, 0, 405, 550);
 		contentPane.add(panel);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		label.setBounds(70, 206, 325, 277);
+		label.setBounds(80, 186, 325, 277);
 		panel.add(label);
 		
-		JLabel lblStudent = new JLabel("STUDENT");
+		JLabel lblStudent = new JLabel("ADMIN");
 		lblStudent.setForeground(Color.WHITE);
 		lblStudent.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 42));
-		lblStudent.setBounds(104, 134, 254, 49);
+		lblStudent.setBounds(128, 137, 254, 49);
 		panel.add(lblStudent);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(401, 0, 546, 507);
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(401, 0, 546, 550);
 		contentPane.add(panel_1);
 		
 		txtPassword = new JPasswordField();
@@ -167,7 +167,6 @@ public class StudentLogI extends JFrame implements ActionListener
 	{
 		if(ae.getSource() == btnLogin)
 		{
-			
 			//Boolean status  = false;
 			try {
 				Conn con = new Conn();
@@ -185,6 +184,9 @@ public class StudentLogI extends JFrame implements ActionListener
 					}
 					else
 						JOptionPane.showMessageDialog(null, "Please Enter Correct Credentials");
+						txtUsername.setText("");
+						txtPassword.setText("");
+						txtUsername.requestFocus();
 				}	
 				
 				rs.close();
@@ -199,7 +201,7 @@ public class StudentLogI extends JFrame implements ActionListener
 		if(ae.getSource() == btnSignUp)
 		{
 			this.setVisible(false);
-			new StudentRegistration().setVisible(true);		
+			new AdminRegistration().setVisible(true);		
 		}
 		
 		if(ae.getSource() == btnBack)

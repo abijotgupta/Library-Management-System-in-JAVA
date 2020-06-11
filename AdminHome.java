@@ -43,7 +43,7 @@ public class AdminHome extends JFrame implements ActionListener
 	public AdminHome() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 20, 1150, 800);
+		setBounds(50, 20, 1021, 800);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new LineBorder(new Color(30, 144, 255)));
@@ -56,27 +56,27 @@ public class AdminHome extends JFrame implements ActionListener
 		btnNewButton.setFocusable(false);
 		btnNewButton.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 48));
 		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBounds(10, 48, 1116, 102);
+		btnNewButton.setBounds(10, 32, 979, 102);
 		contentPane.add(btnNewButton);
 		
 		JLabel addBooks = new JLabel("");
-		addBooks.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		addBooks.setBounds(39, 227, 174, 145);
+		addBooks.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\book.jpg"));
+		addBooks.setBounds(39, 167, 223, 188);
 		contentPane.add(addBooks);
 		
 		JLabel statistics = new JLabel("");
-		statistics.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		statistics.setBounds(283, 227, 174, 145);
+		statistics.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\issue2.jpg"));
+		statistics.setBounds(372, 154, 234, 218);
 		contentPane.add(statistics);
 		
 		JLabel issueBooks = new JLabel("");
-		issueBooks.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		issueBooks.setBounds(530, 227, 174, 145);
+		issueBooks.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\statistics.jpg"));
+		issueBooks.setBounds(731, 167, 234, 201);
 		contentPane.add(issueBooks);
 		
 		JLabel returnBook = new JLabel("");
-		returnBook.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		returnBook.setBounds(784, 227, 192, 145);
+		returnBook.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\return.png"));
+		returnBook.setBounds(372, 483, 234, 244);
 		contentPane.add(returnBook);
 		
 		JLabel lblX = new JLabel("X");
@@ -89,7 +89,7 @@ public class AdminHome extends JFrame implements ActionListener
 		lblX.setForeground(new Color(30, 144, 255));
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblX.setBounds(1117, 0, 45, 35);
+		lblX.setBounds(976, 0, 45, 35);
 		contentPane.add(lblX);
 		
 		
@@ -99,7 +99,7 @@ public class AdminHome extends JFrame implements ActionListener
 		btnAddBooks.setFocusable(false);
 		btnAddBooks.setForeground(new Color(30, 144, 255));
 		btnAddBooks.setBackground(Color.WHITE);
-		btnAddBooks.setBounds(39, 452, 174, 53);
+		btnAddBooks.setBounds(56, 378, 174, 53);
 		contentPane.add(btnAddBooks);
 		
 		btnStatistics = new JButton("STATISTICS");
@@ -108,7 +108,7 @@ public class AdminHome extends JFrame implements ActionListener
 		btnStatistics.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 18));
 		btnStatistics.setFocusable(false);
 		btnStatistics.setBackground(Color.WHITE);
-		btnStatistics.setBounds(530, 452, 174, 53);
+		btnStatistics.setBounds(766, 378, 174, 53);
 		contentPane.add(btnStatistics);
 		
 		btnIssueBooks = new JButton("ISSUE BOOKS");
@@ -117,7 +117,7 @@ public class AdminHome extends JFrame implements ActionListener
 		btnIssueBooks.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 18));
 		btnIssueBooks.setFocusable(false);
 		btnIssueBooks.setBackground(Color.WHITE);
-		btnIssueBooks.setBounds(283, 452, 174, 53);
+		btnIssueBooks.setBounds(402, 378, 174, 53);
 		contentPane.add(btnIssueBooks);
 		
 		btnReturnBook = new JButton("RETURN BOOK");
@@ -126,11 +126,12 @@ public class AdminHome extends JFrame implements ActionListener
 		btnReturnBook.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 18));
 		btnReturnBook.setFocusable(false);
 		btnReturnBook.setBackground(Color.WHITE);
-		btnReturnBook.setBounds(784, 452, 192, 53);
+		btnReturnBook.setBounds(396, 737, 189, 53);
 		contentPane.add(btnReturnBook);
 		
 		JLabel label = new JLabel("");
-		label.setBounds(39, 565, 174, 145);
+		label.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\member.png"));
+		label.setBounds(40, 473, 245, 244);
 		contentPane.add(label);
 		
 		btnMembers = new JButton("MEMBERS");
@@ -139,11 +140,12 @@ public class AdminHome extends JFrame implements ActionListener
 		btnMembers.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 18));
 		btnMembers.setFocusable(false);
 		btnMembers.setBackground(Color.WHITE);
-		btnMembers.setBounds(39, 723, 174, 53);
+		btnMembers.setBounds(56, 737, 174, 53);
 		contentPane.add(btnMembers);
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setBounds(283, 554, 174, 145);
+		label_1.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\fine.png"));
+		label_1.setBounds(731, 499, 234, 218);
 		contentPane.add(label_1);
 		
 		btnTotalFine = new JButton("TOTAL FINE");
@@ -152,7 +154,7 @@ public class AdminHome extends JFrame implements ActionListener
 		btnTotalFine.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 18));
 		btnTotalFine.setFocusable(false);
 		btnTotalFine.setBackground(Color.WHITE);
-		btnTotalFine.setBounds(283, 723, 174, 53);
+		btnTotalFine.setBounds(766, 737, 174, 53);
 		contentPane.add(btnTotalFine);
 		
 		

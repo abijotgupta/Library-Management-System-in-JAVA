@@ -16,6 +16,7 @@ import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -181,7 +182,6 @@ public class StudentUpdate extends JFrame implements ActionListener, ItemListene
 				choice.add(rs.getString("studentID"));
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -285,9 +285,12 @@ public class StudentUpdate extends JFrame implements ActionListener, ItemListene
 			String user = txtUser.getText();
 			String pwd = txtPwd.getText();
 			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			String dob = sdf.format(dateChooser.getDate());
+			
 			try {
 				
-				String sql = "update student set firstName='"+firstName+"',lastName='"+lastName+"',emailID='"+email+"',year='"+year+"',branch='"+branch+"',gender='"+gender+"',address='"+address+"',state='"+state+"',pincode='"+pin+"',username='"+user+"',pwd='"+pwd+"' where studentID="+id;
+				String sql = "update student set firstName='"+firstName+"',lastName='"+lastName+"',emailID='"+email+"',year='"+year+"',branch='"+branch+"',gender='"+gender+"',address='"+address+"',state='"+state+"',pincode='"+pin+"',username='"+user+"',pwd='"+pwd+"',dob='"+dob+"' where studentID="+id;
 				PreparedStatement st = con.c.prepareStatement(sql);
 				
 				st.execute();

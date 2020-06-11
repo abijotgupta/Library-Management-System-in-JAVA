@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.Color;
@@ -17,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.print.PrinterException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,15 +24,18 @@ import java.util.Vector;
 import javax.swing.JTextField;
 import java.awt.Dimension;
 import javax.swing.ListSelectionModel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class Statistics extends JFrame implements ActionListener {
 
-	private JPanel contentPane,header_panel,panel;
+	private JPanel contentPane,panel;
 	private JTable table;
 	private JTextField search_bar;
-	private JLabel lblNewLabel;
 	private JButton btnSearch,btnBack,btnDelete;
+	private JButton btnPrint;
 
 	/**
 	 * Launch the application.
@@ -57,6 +60,7 @@ public class Statistics extends JFrame implements ActionListener {
 	 */
 	public Statistics() 
 	{
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 950, 690);
 		contentPane = new JPanel();
@@ -65,39 +69,21 @@ public class Statistics extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
-		
-		header_panel = new JPanel();
-		header_panel.setBackground(Color.WHITE);
-		header_panel.setForeground(Color.WHITE);
-		header_panel.setBounds(10, 24, 916, 45);
-		contentPane.add(header_panel);
-		
-		lblNewLabel = new JLabel("ISSUED BOOK DETAILS");
-		lblNewLabel.setForeground(new Color(30, 144, 255));
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 22));
-		header_panel.add(lblNewLabel);
-		
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 79, 916, 574);
+		panel.setBounds(10, 88, 916, 581);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		
-		
-		
-		
-		
-		
 		table = new JTable();
+		table.setFocusable(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
 		table.setCellSelectionEnabled(true);
 		table.setGridColor(new Color(30, 144, 255));
-		table.setIntercellSpacing(new Dimension(4, 4));
+		table.setIntercellSpacing(new Dimension(4, 6));
 		table.setName("");
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -110,9 +96,9 @@ public class Statistics extends JFrame implements ActionListener {
 			}
 		});
 		
-		table.setBackground(new Color(240,248,255));
+		table.setBackground(new Color(255, 255, 255));
 		table.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		table.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+		table.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"STUDENT ID", "STUDENT NAME", "BRANCH", "SEMESTER", "BOOK ID", "BOOK NAME", "ISSUE DATE", "RETURN DATE"},
@@ -132,34 +118,74 @@ public class Statistics extends JFrame implements ActionListener {
 		
 	
 		
-		btnSearch = new JButton("SEARCH");
+		btnSearch = new JButton("");
+		btnSearch.setBackground(Color.WHITE);
+		btnSearch.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\Images\\Search.gif"));
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
 			}
 		});
-		btnSearch.setBounds(613, 26, 110, 31);
+		btnSearch.setBounds(582, 26, 53, 31);
 		panel.add(btnSearch);
 		
-		btnDelete = new JButton("DELETE");
+		btnDelete = new JButton("");
+		btnDelete.setBackground(Color.WHITE);
+		btnDelete.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\Images\\delete.gif"));
 		btnDelete.addActionListener(this);
-		btnDelete.setBounds(774, 26, 110, 31);
+		btnDelete.setBounds(645, 26, 49, 31);
 		panel.add(btnDelete);
 		
-		
-		
 		btnBack = new JButton("BACK");
-		
+		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnBack.setForeground(new Color(30, 144, 255));
+		btnBack.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 22));
+		btnBack.setFocusable(false);
+		btnBack.setBorder(new LineBorder(new Color(30, 144, 255)));
+		btnBack.setBackground(Color.WHITE);
+		btnBack.setBounds(492, 537, 110, 31);
 		btnBack.addActionListener(this);
-		
-		btnBack.setBounds(47, 26, 110, 31);
 		panel.add(btnBack);
+	
 		
 		search_bar = new JTextField();
 		search_bar.setBounds(207, 26, 365, 31);
 		panel.add(search_bar);
 		search_bar.setColumns(10);
+		
+		btnPrint = new JButton("PRINT");
+		btnPrint.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnPrint.setForeground(new Color(30, 144, 255));
+		btnPrint.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 22));
+		btnPrint.setFocusable(false);
+		btnPrint.setBorder(new LineBorder(new Color(30, 144, 255)));
+		btnPrint.setBackground(Color.WHITE);
+		btnPrint.setBounds(165, 537, 110, 31);
+		btnPrint.addActionListener(this);
+		panel.add(btnPrint);
+		
+
+		JButton btnIssuedBookDetails = new JButton("ISSUED BOOK DETAILS");
+		btnIssuedBookDetails.setForeground(Color.WHITE);
+		btnIssuedBookDetails.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 40));
+		btnIssuedBookDetails.setFocusable(false);
+		btnIssuedBookDetails.setBackground(new Color(30, 144, 255));
+		btnIssuedBookDetails.setBounds(10, 32, 916, 68);
+		contentPane.add(btnIssuedBookDetails);
+		
+		JLabel lblX = new JLabel("X");
+		lblX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		lblX.setBounds(895, 0, 45, 35);
+		contentPane.add(lblX);
+		lblX.setHorizontalAlignment(SwingConstants.CENTER);
+		lblX.setForeground(new Color(30, 144, 255));
+		lblX.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 			
 		 Category_Load();
@@ -267,7 +293,6 @@ public class Statistics extends JFrame implements ActionListener {
 			catch(Exception e)
 			{
 				System.out.println("Enter Correct Details");
-				//System.out.println(e);
 				
 			}	
 		}
@@ -276,6 +301,17 @@ public class Statistics extends JFrame implements ActionListener {
 		{
 			this.setVisible(false);
 			new AdminHome().setVisible(true);		
+		}
+		
+		if(ae.getSource() == btnPrint)        
+		{
+			this.setVisible(false);
+			try {
+				table.print();
+			} catch (PrinterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}

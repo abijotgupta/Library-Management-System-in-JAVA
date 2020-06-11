@@ -45,7 +45,7 @@ public class Home extends JFrame implements ActionListener
 	public Home() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1162, 599);
+		setBounds(100, 100, 993, 599);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new LineBorder(new Color(30, 144, 255), 2));
@@ -60,7 +60,7 @@ public class Home extends JFrame implements ActionListener
 		header.setFocusable(false);
 		header.setBorder(new LineBorder(new Color(30, 144, 255)));
 		header.setBackground(new Color(30, 144, 255));
-		header.setBounds(10, 36, 1142, 89);
+		header.setBounds(10, 36, 954, 89);
 		contentPane.add(header);
 		
 		JLabel lblX = new JLabel("X");
@@ -73,17 +73,17 @@ public class Home extends JFrame implements ActionListener
 		lblX.setForeground(new Color(30, 144, 255));
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblX.setBounds(1117, 0, 45, 35);
+		lblX.setBounds(948, 0, 45, 35);
 		contentPane.add(lblX);
 		
 		JLabel lblAdmin = new JLabel("");
-		lblAdmin.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		lblAdmin.setBounds(114, 167, 261, 280);
+		lblAdmin.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\admin1.png"));
+		lblAdmin.setBounds(117, 167, 261, 280);
 		contentPane.add(lblAdmin);
 		
 		JLabel lblStudent = new JLabel("");
-		lblStudent.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\user (1).png"));
-		lblStudent.setBounds(745, 167, 261, 280);
+		lblStudent.setIcon(new ImageIcon("C:\\Users\\Abijot Gupta\\Desktop\\LIBRARY_MANAGEMENT_SYSTEM\\src\\img\\stud.png"));
+		lblStudent.setBounds(674, 167, 261, 280);
 		contentPane.add(lblStudent);
 		
 		btnAdmin = new JButton("ADMIN");
@@ -94,7 +94,7 @@ public class Home extends JFrame implements ActionListener
 		btnAdmin.setFocusable(false);
 		btnAdmin.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnAdmin.setBackground(Color.WHITE);
-		btnAdmin.setBounds(150, 489, 184, 52);
+		btnAdmin.setBounds(136, 489, 184, 52);
 		contentPane.add(btnAdmin);
 		
 		btnStudent = new JButton("STUDENT");
@@ -105,7 +105,7 @@ public class Home extends JFrame implements ActionListener
 		btnStudent.setFocusable(false);
 		btnStudent.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnStudent.setBackground(Color.WHITE);
-		btnStudent.setBounds(793, 489, 184, 52);
+		btnStudent.setBounds(702, 489, 184, 52);
 		contentPane.add(btnStudent);
 		
 	}
@@ -116,7 +116,7 @@ public class Home extends JFrame implements ActionListener
 		if(ae.getSource() == btnAdmin)
 		{
 			this.setVisible(false);
-			new AdminLogI().setVisible(true);		
+			new AdminLogIn().setVisible(true);		
 		}
 		
 		if(ae.getSource() == btnStudent)

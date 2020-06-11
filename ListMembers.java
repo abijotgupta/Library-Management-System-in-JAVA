@@ -96,7 +96,7 @@ public class ListMembers extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Home().setVisible(true);
+				new AdminHome().setVisible(true);
 			}
 		});
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);

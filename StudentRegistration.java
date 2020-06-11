@@ -56,8 +56,9 @@ public class StudentRegistration extends JFrame implements ActionListener{
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public StudentRegistration() {
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 50, 841, 750);
+		setBounds(100, 50, 816, 728);
 		day = new JPanel();
 		day.setBackground(new Color(255, 255, 255));
 		day.setToolTipText("");
@@ -72,7 +73,7 @@ public class StudentRegistration extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnStudentRegistrationForm.setBounds(10, 10, 808, 67);
+		btnStudentRegistrationForm.setBounds(10, 10, 796, 67);
 		btnStudentRegistrationForm.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnStudentRegistrationForm.setForeground(Color.WHITE);
 		btnStudentRegistrationForm.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 44));
@@ -255,8 +256,8 @@ public class StudentRegistration extends JFrame implements ActionListener{
 				st.setString(2, txtLast.getText());
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				String issuedate = sdf.format(dateChooser.getDate());
-				st.setString(3, issuedate);
+				String dob = sdf.format(dateChooser.getDate());
+				st.setString(3, dob);
 	
 				st.setString(4, txtEmail.getText());
 				st.setString(5, (String)comboYear.getSelectedItem());
@@ -273,23 +274,22 @@ public class StudentRegistration extends JFrame implements ActionListener{
 			
 				JOptionPane.showMessageDialog(null, "Account Has Been Created!");
 				
-				txtFirst.setName(" ");
-				txtLast.setName(" ");
+				txtFirst.setText(" ");
+				txtLast.setText(" ");
 				dateChooser.setDateFormatString("");
-				txtEmail.setName(" ");
+				txtEmail.setText(" ");
 				comboYear.setSelectedItem("");
 				comboBranch.setSelectedItem("");
 				comboGender.setSelectedItem("");
 				txtAddress.setText(" ");
 				comboState.setSelectedItem("");
-				txtPin.setName(" ");
-				txtUser.setName(" ");
-				txtPwd.setName(" ");
+				txtPin.setText(" ");
+				txtUser.setText(" ");
+				txtPwd.setText(" ");
 				
 				txtFirst.requestFocus();
 				
 				st.close();
-				
 			}
 			catch(Exception e)
 			{

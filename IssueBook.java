@@ -241,7 +241,7 @@ public class IssueBook extends JFrame implements ActionListener, ItemListener
 		Conn c1 = new Conn();
 		ResultSet rs1;
 		try {
-			rs1 = c1.s.executeQuery("select * from student");
+			rs1 = c1.s.executeQuery("select * from addbooks");
 			while(rs1.next())
 			{
 				studentChoice.add(rs1.getString("bookID"));
@@ -302,9 +302,23 @@ public class IssueBook extends JFrame implements ActionListener, ItemListener
 				String returndate = sdf1.format(dateChooserReturn.getDate());
 				st.setString(10, returndate);
 				
-				
-				
 				st.execute();
+			
+				
+				
+				int quantity;
+				ResultSet rs2;
+				String sql1 = "select quantity from addbooks ";
+				
+					PreparedStatement st1 = con.c.prepareStatement(sql1);
+					rs2 = st1.executeQuery();
+					quantity = Integer.parseInt(rs2.getString("quantity"));
+				
+				
+				String sql2 = "update addbooks set quantity='"+(quantity-1)+"' where bookID="+bookChoice;
+				PreparedStatement st2 = con.c.prepareStatement(sql2);
+				st2.execute();
+			
 				
 				JOptionPane.showMessageDialog(null, "Requested Book Has Been Issued!");
 
@@ -326,8 +340,7 @@ public class IssueBook extends JFrame implements ActionListener, ItemListener
 			}
 			catch(Exception e)
 			{
-				System.out.println("Enter Correct Details");
-				//System.out.println(e);
+				System.out.println(e);
 				
 			}
 		}	

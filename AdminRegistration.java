@@ -13,11 +13,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Properties;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.mail.Message;
+import javax.mail.Message.RecipientType;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Cursor;
 import javax.swing.JPasswordField;
@@ -236,7 +245,11 @@ public class AdminRegistration extends JFrame implements ActionListener
 					st.setString(1, txtfirstName.getText());
 					st.setString(2, txtlastName.getText());
 					st.setString(3, (String)comboGender.getSelectedItem());
-					st.setString(4, (String)dateChooser.getDateFormatString());	
+					
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+					String dob = sdf.format(dateChooser.getDate());
+					st.setString(4, dob);
+					
 					st.setString(5, txtemailId.getText());
 					st.setString(6, txtuserName.getText());
 					st.setString(7, passwordField.getText());
@@ -247,28 +260,79 @@ public class AdminRegistration extends JFrame implements ActionListener
 				
 					JOptionPane.showMessageDialog(null, "Account Has Been Created!");
 					
-					txtfirstName.setName("");
-					txtlastName.setName("");
+					txtfirstName.setText("");
+					txtlastName.setText("");
 					comboGender.setSelectedItem("");
 					dateChooser.setDateFormatString("");
-					txtemailId.setName("");
-					txtuserName.setName("");
-					passwordField.setName("");
-					txtre_Pwd.setName("");
+					txtemailId.setText("");
+					txtuserName.setText("");
+					passwordField.setText("");
+					txtre_Pwd.setText("");
+					txtfirstName.requestFocus();
 					
 					st.close();
+					
+					Properties props = new Properties();
+					props.put("mail.smtp.host", "smtp.gmail.com");
+					props.put("mail.smtp.port", 465);
+					props.put("mail.smtp.user", "abhijotgupta1998@gmail.com");
+					props.put("mail.smtp.auth", "true");
+					props.put("mail.smtp.starttls.enable", "true");
+					props.put("mail.smtp.debug", "true");
+					props.put("mail.smtp.socketFactory.port", 465);
+					props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+					props.put("mail.smtp.socketFactory.fallback", "false");		
+					
+					System.out.println("hello");
+					Conn con1 = new Conn();
+					
+					String sql1 = "select userName,password from adminaccounts";
+					PreparedStatement st1 = con1.c.prepareStatement(sql1);
+					ResultSet result = st1.executeQuery();
+					if(result.next())
+					{
+						String username = result.getString("userName");
+						String password = result.getString("password");
+						Session session=Session.getDefaultInstance(props,null);
+						session.setDebug(true);
+						
+						
+						
+						Message message =new MimeMessage(session);
+						
+						
+						
+						
+						
+						
+						message.setText("Your UserName is "+username+" & your password is "+ password); 
+						message.setSubject("Your Library Account Details");
+						message.setFrom(new InternetAddress("abhijotgupta1998@gmail.com"));
+						message.addRecipient(RecipientType.TO , new InternetAddress(txtemailId.getText().trim()));
+						message.saveChanges();
+						
+						
+						
+						Transport transport = session.getTransport("smtp");
+						transport.connect("smtp.gmail.com","abhijotgupta1998@gmail.com","abhijot@123");
+						transport.sendMessage(message, message.getAllRecipients());
+						transport.close();
+						
+					}
+				
 					
 				}
 				catch(Exception e)
 				{
 					JOptionPane.showMessageDialog(null, e);
+					
 				}
 			}	
 			
 			if(ae.getSource() == btnBack)        
 			{
 				this.setVisible(false);
-				new AdminLogI().setVisible(true);		
+				new AdminLogIn().setVisible(true);		
 			}
 			
 		}

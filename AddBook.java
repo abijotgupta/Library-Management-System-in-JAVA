@@ -35,6 +35,7 @@ public class AddBook extends JFrame implements ActionListener
 	@SuppressWarnings("rawtypes")
 	private JComboBox comboEdition;
 	private JButton btnAdd, btnBack;
+	private JTextField txtQuantity;
 
 	/**
 	 * Launch the application.
@@ -59,7 +60,7 @@ public class AddBook extends JFrame implements ActionListener
 	public AddBook() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 650);
+		setBounds(100, 100, 668, 650);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setForeground(new Color(255, 255, 255));
@@ -70,15 +71,15 @@ public class AddBook extends JFrame implements ActionListener
 		JButton btnNewButton = new JButton("LIBRARY MANAGEMENT SYSTEM");
 		btnNewButton.setBackground(new Color(30, 144, 255));
 		btnNewButton.setFocusable(false);
-		btnNewButton.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 40));
+		btnNewButton.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 34));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBounds(10, 37, 766, 78);
+		btnNewButton.setBounds(10, 37, 648, 78);
 		contentPane.add(btnNewButton);
 		
 		JLabel labelAddBooks = new JLabel("ADD BOOKS");
 		labelAddBooks.setFocusable(false);
 		labelAddBooks.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 26));
-		labelAddBooks.setBounds(288, 125, 205, 45);
+		labelAddBooks.setBounds(222, 126, 205, 45);
 		contentPane.add(labelAddBooks);
 		
 		JLabel lblNewLabel = new JLabel("BOOK ID");
@@ -126,7 +127,7 @@ public class AddBook extends JFrame implements ActionListener
 		lblX.setForeground(new Color(30, 144, 255));
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblX.setBounds(741, 0, 45, 35);
+		lblX.setBounds(623, 0, 45, 35);
 		contentPane.add(lblX);
 		
 		txtBookId = new JTextField();
@@ -172,7 +173,7 @@ public class AddBook extends JFrame implements ActionListener
 		btnAdd.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 22));
 		btnAdd.setFocusable(false);
 		btnAdd.setBorder(new LineBorder(new Color(30, 144, 255)));
-		btnAdd.setBounds(180, 564, 108, 39);
+		btnAdd.setBounds(103, 588, 108, 39);
 		contentPane.add(btnAdd);
 		
 		btnBack = new JButton("BACK");
@@ -183,7 +184,7 @@ public class AddBook extends JFrame implements ActionListener
 		btnBack.setFocusable(false);
 		btnBack.setBorder(new LineBorder(new Color(30, 144, 255)));
 		btnBack.setBackground(Color.WHITE);
-		btnBack.setBounds(385, 564, 108, 39);
+		btnBack.setBounds(370, 588, 108, 39);
 		contentPane.add(btnBack);
 		
 		JLabel lblAuthorName = new JLabel("AUTHOR NAME");
@@ -195,6 +196,16 @@ public class AddBook extends JFrame implements ActionListener
 		txtAuthorName.setColumns(10);
 		txtAuthorName.setBounds(180, 348, 258, 29);
 		contentPane.add(txtAuthorName);
+		
+		JLabel lblQuantity = new JLabel("QUANTITY");
+		lblQuantity.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblQuantity.setBounds(39, 507, 143, 29);
+		contentPane.add(lblQuantity);
+		
+		txtQuantity = new JTextField();
+		txtQuantity.setColumns(10);
+		txtQuantity.setBounds(180, 507, 131, 29);
+		contentPane.add(txtQuantity);
 	}
 	
 
@@ -205,7 +216,7 @@ public class AddBook extends JFrame implements ActionListener
 			
 			try {
 				Conn con = new Conn();
-				String sql = "insert into addbooks (bookID,bookName,isbnNo,edition,authorName,publisher,price,pages) values(?,?,?,?,?,?,?,?) ";
+				String sql = "insert into addbooks (bookID,bookName,isbnNo,edition,authorName,publisher,price,pages,quantity) values(?,?,?,?,?,?,?,?,?) ";
 				PreparedStatement st = con.c.prepareStatement(sql);
 				
 				st.setString(1, txtBookId.getText());
@@ -216,10 +227,9 @@ public class AddBook extends JFrame implements ActionListener
 				st.setString(6, txtPublisher.getText());
 				st.setString(7, txtPrice.getText());
 				st.setString(8, txtPages.getText());
+				st.setString(9, txtQuantity.getText());
 				
 				st.execute();
-				
-			
 				JOptionPane.showMessageDialog(null, "New Book Has Been Added!");
 				
 				
@@ -231,7 +241,7 @@ public class AddBook extends JFrame implements ActionListener
 				txtPrice.setText("");
 				txtPages.setText("");
 				comboEdition.setSelectedItem("");
-				
+				txtQuantity.setText("");
 				txtBookId.requestFocus();
 			
 				st.close();
@@ -254,6 +264,4 @@ public class AddBook extends JFrame implements ActionListener
 		}
 		
 	}
-	
-	
 }
