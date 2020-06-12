@@ -51,9 +51,6 @@ public class StudentRegistration extends JFrame implements ActionListener{
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public StudentRegistration() {
 		setUndecorated(true);
