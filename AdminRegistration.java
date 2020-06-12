@@ -275,7 +275,7 @@ public class AdminRegistration extends JFrame implements ActionListener
 					Properties props = new Properties();
 					props.put("mail.smtp.host", "smtp.gmail.com");
 					props.put("mail.smtp.port", 465);
-					props.put("mail.smtp.user", "abhijotgupta1998@gmail.com");
+					props.put("mail.smtp.user","your_email_id");
 					props.put("mail.smtp.auth", "true");
 					props.put("mail.smtp.starttls.enable", "true");
 					props.put("mail.smtp.debug", "true");
@@ -307,14 +307,14 @@ public class AdminRegistration extends JFrame implements ActionListener
 						
 						message.setText("Your UserName is "+username+" & your password is "+ password); 
 						message.setSubject("Your Library Account Details");
-						message.setFrom(new InternetAddress("abhijotgupta1998@gmail.com"));
+						message.setFrom(new InternetAddress("your_email_id"));
 						message.addRecipient(RecipientType.TO , new InternetAddress(txtemailId.getText().trim()));
 						message.saveChanges();
 						
 						
 						
 						Transport transport = session.getTransport("smtp");
-						transport.connect("smtp.gmail.com","abhijotgupta1998@gmail.com","abhijot@123");
+						transport.connect("smtp.gmail.com","your_email_id","your_email_password");
 						transport.sendMessage(message, message.getAllRecipients());
 						transport.close();
 						
